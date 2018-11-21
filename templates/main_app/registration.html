@@ -1,0 +1,44 @@
+{% extends 'main_app/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="jumbotron">
+  {% if registered %}
+    <h1>Thank you for registering!</h1>
+    {% else %}
+    <h1>Register Here!</h1>
+</div>
+<div class="container registration-conainer">
+
+
+    <h3>Fill the form:</h3>
+
+    <form enctype="multipart/form-data" method="post">
+      {% csrf_token %}
+      {% for field in user_form %}
+      <div class="form-group">
+          <label class="control-label" for="id_{{ field.name }}">{{ field.label }}</label>
+              {{ field }}
+              <p>{{ field.errors }}{{ forms.non_field_errors }}</p>
+              {% if field.help_text %}
+                <small  class="form-text text-muted">{{ field.help_text }}</small>
+              {% endif %}
+      </div>
+      {% endfor %}
+      {% for field in profile_form %}
+      <div class="form-group">
+          <label class="control-label" for="id_{{ field.name }}">{{ field.label }}</label>
+              {{ field }}
+              <p>{{ field.errors }}{{ forms.non_field_errors }}</p>
+              {% if field.help_text %}
+                <p class="help">{{ field.help_text }}</p>
+              {% endif %}
+      </div>
+      {% endfor %}
+
+      <input type="submit" name="" value="Register" />
+    </form>
+    {% endif %}
+</div>
+{% endblock %}
