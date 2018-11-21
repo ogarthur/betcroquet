@@ -27,7 +27,7 @@ SECRET_KEY = '02f@4%(#g42sz$0uocb)*w2kw0#&e-*vn%ay29)vi96#*)e_@l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1',]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -130,4 +130,5 @@ MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL  = '/media/'
 
 LOGIN_URL ='/main_app/user_login'
+
 django_heroku.settings(locals())
