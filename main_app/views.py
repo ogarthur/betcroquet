@@ -12,9 +12,11 @@ def index(request):
     return render(request,'main_app/index.html')
 
 
+##########################################REGISTRO/LOGIN##################################################
 #REGISTRO
+
 def register(request):
-    print("register")
+
     registered = False
 
     if request.method == "POST":
@@ -28,9 +30,6 @@ def register(request):
             user.save()
             profile = profile_form.save(commit=False)
             profile.user = user
-
-            if 'profile_pic' in request.FILES:
-                profile.profile_pic = request.Files['profile_pic']
             profile.save()
             registered = True
         else:
@@ -38,6 +37,7 @@ def register(request):
     else:
         user_form = UserForm()
         profile_form = UserProfileForm()
+
     return render(request,'main_app/registration.html',
     {'user_form':user_form,
     'profile_form':profile_form,
@@ -58,17 +58,16 @@ def user_login(request):
                 return HttpResponseRedirect(reverse('index'))
 
             else:
-                msg= _("ACCOUNT NOT ACTIVE")
-                return HttpResponse(msg)
+                return HttpResponse("Cuenta no activa")
         else:
             print("Someone tried to login and failed")
             print("Username: {}  with password :{}".format(username,password))
-            msg= _("invalid login deatils supplied")
-            return HttpResponse(msg)
+            return render(request,'main_app/login.html',{'login_error':'Credeenciales no válidos'})
     else:
         return render(request,'main_app/login.html',{})
 
-#
+
+#LOGOUT
 @login_required
 def user_logout(request):
     logout(request)

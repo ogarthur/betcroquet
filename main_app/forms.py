@@ -5,9 +5,9 @@ from main_app.models             import UserProfileInfo
 from django.utils.translation import gettext as _
 
 
+
 class UserForm(forms.ModelForm):
-    #username = forms.CharField(widget = forms.TextInput(attrs={'class':'form-control',}))
-    email   =  forms.EmailField(widget = forms.EmailInput(attrs={'class':'form-control',}))
+    """ Clase formulario para datos de usuarios basicos"""
     password = forms.CharField(widget = forms.PasswordInput(attrs={'class':'form-control',}))
     confirm_password=forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control ',}))
 
@@ -16,49 +16,56 @@ class UserForm(forms.ModelForm):
         password = cleaned_data.get("password")
         confirm_password = cleaned_data.get("confirm_password")
         if password != confirm_password:
-            msg = "Passwords are not the same"
+            msg = "Las contraseñas no coinciden"
             self.add_error('password', msg)
-
 
     class Meta():
         model = User
+        msg_required= "Campo obligatorio"
         fields = ('username','email','password','confirm_password')
         labels = {
-            'username': _('Username:'),
+            'username': _('Nombre de usuario:'),
             'email': _('Email:'),
-            'password':  _('Password:'),
-            'confirm_password':    _('Repeat Password:'),
+            'password':  _('Contraseña:'),
+            'confirm_password':    _('Repita contraseña:'),
         }
         help_texts = {
-            'username': _('Minimum length 6 characters'),
-
+            'username': _('longitud mínima 6 cáracteres'),
         }
-
         error_messages = {
             'username': {
-                'required': _("REQUIRED")
+                'max_length': _("Longitud no válida"),
+                'required': _(msg_required)
             },
             'password': {
-                'required': _("REQUIRED")
+                'required': _(msg_required)
             },
             'confirm_password': {
-                'required': _("REQUIRED")
+                'required': _(msg_required)
             },
             'email': {
-                'required': _("REQUIRED")
+                'required': _(msg_required)
             },
         }
         widgets = {
                     'username':  forms.TextInput(attrs={'class':'form-control',}),
+                    'email':forms.EmailInput(attrs={'class':'form-control',}),
+
                 }
-
-
 class UserProfileForm(forms.ModelForm):
-
-    nick        = forms.CharField(required=False)
-    profile_pic = forms.ImageField(required=False)
+    """ Clase formulario detalles adicionales sobre el usuario"""
+    user_info= forms.CharField(required=False)
 
     class Meta():
         model = UserProfileInfo
-        fields = ('nick','profile_pic')
+        fields = ('user_info',)
         exclude = ('user',)
+        widgets = {
+                    'username':  forms.TextInput(attrs={'class':'form-control',}),
+                    'email':forms.EmailInput(attrs={'class':'form-control',}),
+                    'password': forms.PasswordInput(attrs={'class':'form-control',}),
+                    'confirm_password':  forms.PasswordInput(attrs={'class':'form-control',}),
+                }
+        help_texts = {
+            'user_info': _('(No necesario)'),
+        }

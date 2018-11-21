@@ -7,13 +7,14 @@ class UserProfileInfo(models.Model):
 
     user = models.OneToOneField(User, on_delete="cascade")
     #aditional
-    nick            = models.CharField(max_length=200,blank=True)
-    profile_pic     = models.ImageField(upload_to='profile_pics',blank=True)
+    user_info = models.TextField(max_length=500,blank=True)
+
     language = models.CharField(max_length=10,
                                 choices=settings.LANGUAGES,
                                 default=settings.LANGUAGE_CODE)
     def __str__(self):
         return self.user.username
+
 
 class Game(models.Model):
     pass
@@ -27,4 +28,3 @@ class Section(models.Model):
 class Option(models.Model):
 
     pass
- 
