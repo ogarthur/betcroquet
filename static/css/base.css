@@ -1,17 +1,30 @@
+html{
+  font-family: Verdana,Geneva,sans-serif;
+}
+.footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #f5f5f5;
+  margin-bottom: 0
+}
+.content-container{
+  min-height: 70%;
+  min-height: -webkit-calc(100% - 186px);
+  min-height: -moz-calc(100% - 186px);
+  min-height: calc(100% - 186px);
+}
 .jumbotron {
     background: #532f8c;
     color: white;
     padding-bottom: 80px
 }
-.square {
-  float:left;
-  position: relative;
-  width: 30%;
-  padding-bottom : 30%; /* = width for a 1:1 aspect ratio */
-  margin:1.66%;
-  background-color:#d69a9a;
-  overflow:hidden;
-  border-radius:4%
+.bg-grey {
+    background-color: #f6f6f6;
+}
+input{
+  color:black;
 }
 .jumbotron .btn-primary {
     background: #845ac7;
@@ -25,8 +38,19 @@
     max-width: 75%;
     margin: 1em auto 2em
 }
-.navbar+.jumbotron {
-    margin-top: -20px
+.jumbotron-top{
+  margin-top:20px
+}
+.glyphicon-user{
+  padding-right: 0.5em;
+}
+.navbar{
+  margin-bottom: 0!important;
+  margin-top: -1em;
+}
+}
+.error_warning{
+  color:red!important;
 }
 .jumbotron .lang-logo {
     display: block;
@@ -41,17 +65,9 @@
 .jumbotron .lang-logo img {
     max-width: 100%
 }
-.img-bet{
-  max-width: 400px;
-  max-height: 400px;
-}
 
-.registration-conainer{
-  background-color:#c6b3e6;
-}
 
-@media screen and (min-width: 769px)  {
-  .registration-conainer{
-    width:50%;
+@media screen and (max-width: 769px)  {
+
   }
 }

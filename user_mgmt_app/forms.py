@@ -1,8 +1,8 @@
-from django                     import forms
+from django import forms
+from django.core import validators
 from django.contrib.auth.models import User
-from django.core                import validators
-from main_app.models             import UserProfileInfo
 from django.utils.translation import gettext as _
+from user_mgmt_app.models import UserProfileInfo
 
 
 
