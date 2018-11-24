@@ -1,8 +1,8 @@
 html,
 body {
-    font-family: Verdana,Geneva,sans-serif;
- height: 100%;
- position: relative;
+  font-family: Verdana,Geneva,sans-serif;
+  height: 100%;
+  position: relative;
 }
 .logo-img{
   max-width: 30px;
