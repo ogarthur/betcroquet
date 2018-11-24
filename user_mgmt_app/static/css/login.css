@@ -1,35 +1,10 @@
-.jumbotron {
-    background: #532f8c;
-    color: white;
-    padding-bottom: 80px
-}
 
 .glyphicon-user{
   padding-right: 0.5em;
 }
 
-.jumbotron .btn-primary {
-    background: #845ac7;
-    border-color: #845ac7
-}
-
-.jumbotron .btn-primary:hover {
-    background: #7646c1
-}
-
-.jumbotron p {
-    color: #d9ccee;
-    max-width: 75%;
-    margin: 1em auto 2em
-}
-
-.navbar+.jumbotron {
-    margin-top: -20px
-}
-
-
 .registration-container,.login-container{
-  background-color:#c6b3e6;
+  background-color:#907342bf;
   padding: 2em 2em 2em 2em;
   margin-top: 4em;
   border-radius: 6px;
