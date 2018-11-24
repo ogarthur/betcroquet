@@ -1,6 +1,14 @@
 html{
   font-family: Verdana,Geneva,sans-serif;
 }
+.logo-img{
+  max-width: 30px;
+  max-height: 40px;
+}
+.logo-conatiner{
+  padding-top: 0;
+  padding-bottom: 0;
+}
 .footer{
   position: absolute;
   bottom: 0;
@@ -16,7 +24,7 @@ html{
   min-height: calc(100% - 186px);
 }
 .jumbotron {
-    background: #532f8c;
+    background: #796537;
     color: white;
     padding-bottom: 80px
 }
@@ -45,6 +53,8 @@ input{
   padding-right: 0.5em;
 }
 .navbar{
+  border:none!important;
+  background-color: #46340B;
   margin-bottom: 0!important;
   margin-top: -1em;
 }
