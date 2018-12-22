@@ -42,21 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'wagtail.contrib.forms',
-    'wagtail.contrib.redirects',
-    'wagtail.embeds',
-    'wagtail.sites',
-    'wagtail.users',
-    'wagtail.snippets',
-    'wagtail.documents',
-    'wagtail.images',
-    'wagtail.search',
-    'wagtail.admin',
-    'wagtail.core',
-
-    'modelcluster',
-    'taggit',
-
     'main_app',
     'user_mgmt_app',
 ]
@@ -69,8 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'wagtail.core.middleware.SiteMiddleware',
-    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+
 ]
 
 ROOT_URLCONF = 'lastpotatodev.urls'
@@ -92,7 +76,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'lastpotatodev.wsgi.application'
-WAGTAIL_SITE_NAME = 'OGARTHUR'
+
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
