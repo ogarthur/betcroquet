@@ -87,7 +87,10 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+import dj_databas_url
 
+db_from_env= dj_databas_url.config()
+DATABASES['default'].update(db_from_env)
 
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 PASSWORD_HASHERS =[
