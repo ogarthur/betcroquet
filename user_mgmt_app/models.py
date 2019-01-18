@@ -5,7 +5,7 @@ from django.conf import settings
 
 class UserProfileInfo(models.Model):
 
-    user = models.OneToOneField(User, on_delete="cascade")
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     #aditional
     user_info = models.TextField(max_length=500,blank=True)
 

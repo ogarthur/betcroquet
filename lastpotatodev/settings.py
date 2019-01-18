@@ -13,12 +13,12 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 import django_heroku
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TEMPLATE_DIR    = os.path.join(BASE_DIR,'templates')
-STATIC_DIR      = os.path.join(BASE_DIR,'static')
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+BASE_DIR            = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+TEMPLATE_DIR        = os.path.join(BASE_DIR,'templates')
+STATIC_DIR          = os.path.join(BASE_DIR,'static')
+STATIC_ROOT         = os.path.join(BASE_DIR, 'staticfiles')
 USR_MGMT_STATIC_DIR      = os.path.join(BASE_DIR,'user_mgmt_app/static')
-MEDIA_DIR       = os.path.join(BASE_DIR,'media')
+MEDIA_DIR           = os.path.join(BASE_DIR,'media')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -44,6 +44,21 @@ INSTALLED_APPS = [
 
     'main_app',
     'user_mgmt_app',
+
+    'wagtail.contrib.forms',
+    'wagtail.contrib.redirects',
+    'wagtail.embeds',
+    'wagtail.sites',
+    'wagtail.users',
+    'wagtail.snippets',
+    'wagtail.documents',
+    'wagtail.images',
+    'wagtail.search',
+    'wagtail.admin',
+    'wagtail.core',
+
+    'modelcluster',
+    'taggit',
 ]
 
 MIDDLEWARE = [
@@ -54,6 +69,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'wagtail.core.middleware.SiteMiddleware',
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 
 ]
 
@@ -146,5 +163,5 @@ MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL  = '/media/'
 
 LOGIN_URL ='/user_mgmt_app/user_login'
-
+WAGTAIL_SITE_NAME = 'BetCroquet'
 django_heroku.settings(locals())
