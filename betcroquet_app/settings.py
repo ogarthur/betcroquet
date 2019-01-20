@@ -106,16 +106,6 @@ DATABASES = {
     }
 
 }
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd8sa9rh8du37so',
-        'USER': 'bickvxcxznvace',
-        'PASSWORD': '78163e650533545ae6075e4c5b9b8eae0f231d9fad60ee70214f1d6e1d62ffbe',
-        'HOST': 'ec2-54-247-82-210.eu-west-1.compute.amazonaws.com',
-        'PORT': '5432',
-    }
-}
 import dj_database_url
 
 db_from_env= dj_database_url.config()
@@ -179,5 +169,4 @@ WAGTAIL_SITE_NAME = 'BetCroquet'
 django_heroku.settings(locals())
 
 if os.environ.get('DJANGO_DEVELOPMENT') is not None:
-
     from settings_dev import *
