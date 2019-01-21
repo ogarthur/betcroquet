@@ -2,8 +2,8 @@ from django import forms
 from django.core import validators
 from django.contrib.auth.models import User
 from django.utils.translation import gettext as _
-from user_mgmt_app.models import UserProfileInfo
-
+from user_mgmt_app.models import UserProfileInfo,FriendRelationship
+from django.core.files.images import get_image_dimensions
 
 
 class UserForm(forms.ModelForm):
@@ -21,16 +21,35 @@ class UserForm(forms.ModelForm):
 
     class Meta():
         model = User
-        msg_required= "Campo obligatorio"
-        fields = ('username','email','password','confirm_password')
+        msg_required = "Campo obligatorio"
+        fields = (
+        'username',
+        'first_name',
+        'last_name',
+        'email',
+        'password',
+        'confirm_password'
+        )
+
+        fields_required= (
+            'username',
+            'email',
+            'password',
+            'confirm_password'
+            )
+
         labels = {
-            'username': _('Nombre de usuario:'),
+            'username': _('Nombre de usuario :'),
+            'first_name': _('Nombre :'),
+            'last_name': _('Apellidos :'),
             'email': _('Email:'),
-            'password':  _('Contraseña:'),
-            'confirm_password':    _('Repita contraseña:'),
+            'password':  _('Contraseña :'),
+            'confirm_password':    _('Repita contraseña :'),
         }
         help_texts = {
             'username': _('longitud mínima 6 cáracteres'),
+            'first_name': _('No es obligatorio'),
+            'last_name': _('No es obligatorio'),
         }
         error_messages = {
             'username': {
@@ -49,23 +68,33 @@ class UserForm(forms.ModelForm):
         }
         widgets = {
                     'username':  forms.TextInput(attrs={'class':'form-control',}),
+                    'first_name':  forms.TextInput(attrs={'class':'form-control',}),
+                    'last_name':  forms.TextInput(attrs={'class':'form-control',}),
                     'email':forms.EmailInput(attrs={'class':'form-control',}),
 
                 }
 class UserProfileForm(forms.ModelForm):
     """ Clase formulario detalles adicionales sobre el usuario"""
-    user_info= forms.CharField(required=False)
+
 
     class Meta():
         model = UserProfileInfo
-        fields = ('user_info',)
-        exclude = ('user',)
-        widgets = {
-                    'username':  forms.TextInput(attrs={'class':'form-control',}),
-                    'email':forms.EmailInput(attrs={'class':'form-control',}),
-                    'password': forms.PasswordInput(attrs={'class':'form-control',}),
-                    'confirm_password':  forms.PasswordInput(attrs={'class':'form-control',}),
+        fields = ('user_info','profile_pic')
+        exclude = ('user','friends')
+        labels = {
+                'user_info': _('Información sobre el usuario :'),
+                'profile_pic': _('Imagen de perfil:'),
+
                 }
         help_texts = {
-            'user_info': _('(No necesario)'),
+            'user_info': _('(Información relevante sobre el usuario.No necesario)'),
         }
+        widgets = {
+                    'user_info': forms.Textarea(attrs={'class':'form-control input-lg description-TextInput',}),
+        }
+
+class FriendForm(forms.Form):
+    friend = forms.CharField(label='Nombre de usuario:', widget=forms.TextInput(attrs={'required':'required','class':'form-control',}))
+    def clean(self):
+        all_clean_data = super( FriendForm,self).clean()
+        friend    = all_clean_data['friend']

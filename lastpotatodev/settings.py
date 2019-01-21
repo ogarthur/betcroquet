@@ -28,9 +28,9 @@ print("noDEV")
 SECRET_KEY = '02f@4%(#g42sz$0uocb)*w2kw0#&e-*vn%ay29)vi96#*)e_@l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     'main_app',
     'user_mgmt_app',
+    'betcroquet_app',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -60,6 +61,8 @@ INSTALLED_APPS = [
 
     'modelcluster',
     'taggit',
+
+    'django_extensions',
 ]
 
 MIDDLEWARE = [

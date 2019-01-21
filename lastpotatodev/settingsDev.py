@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     'main_app',
     'user_mgmt_app',
+    'betcroquet_app',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',

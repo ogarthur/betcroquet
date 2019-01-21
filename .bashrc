@@ -1,2 +1,2 @@
 export DJANGO_DEVELOPMENT = True
-print("HERE")
+  print("HERE")

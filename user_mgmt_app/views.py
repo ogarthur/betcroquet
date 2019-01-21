@@ -7,6 +7,7 @@ from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from user_mgmt_app.forms import UserForm,UserProfileForm
+from user_mgmt_app.models import UserProfileInfo
 # Create your views here.
 ##########################################REGISTRO/LOGIN##################################################
 #REGISTRO
@@ -15,15 +16,17 @@ def register(request):
     registered = False
     if request.method == "POST":
         user_form       = UserForm(data=request.POST)
-        profile_form    = UserProfileForm(data=request.POST)
+        profile_form    = UserProfileForm(request.POST,request.FILES)
 
-        if user_form.is_valid() and profile_form.is_valid():
+        if user_form.is_valid():
 
             user = user_form.save()
             user.set_password(user.password)
             user.save()
             profile = profile_form.save(commit=False)
             profile.user = user
+            if(profile.profile_pic=='pic_folder/None/no-img.jpg'):
+                profile.profile_pic='profile_pics/avatar.png'
             profile.save()
             registered = True
         else:
@@ -49,6 +52,8 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request,user)
+                user_info=UserProfileInfo.objects.filter(user=user).values_list('profile_pic',flat=True)
+                request.session['profile_pic']=user_info[0]
                 return HttpResponseRedirect(reverse('index'))
 
             else:
