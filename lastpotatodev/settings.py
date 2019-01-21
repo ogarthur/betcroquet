@@ -19,7 +19,6 @@ STATIC_DIR          = os.path.join(BASE_DIR,'static')
 STATIC_ROOT         = os.path.join(BASE_DIR, 'staticfiles')
 USR_MGMT_STATIC_DIR      = os.path.join(BASE_DIR,'user_mgmt_app/static')
 MEDIA_DIR           = os.path.join(BASE_DIR,'media')
-print("noDEV")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/

@@ -5,21 +5,26 @@ from django.conf import settings
 
 
 class BetCollection(models.Model):
-    gameCode    = models.TextField(max_length=500,unique= True)
+    name        = models.CharField(max_length=100)
+    gameCode    = models.CharField(max_length=100,unique= True)
     state       = models.BooleanField(default = False)
     openDate    = models.DateField()
     endDate     = models.DateField()
     max_users   = models.IntegerField(null=True)
-    name        = models.TextField(max_length=500)
+
+    description = models.TextField(max_length=500,null=True)
     def __str__(self):
         return self.name
 
 class Bet(models.Model):
+
     betCollection   = models.ForeignKey(BetCollection,related_name='betCollBet',on_delete=models.CASCADE)
     user            = models.OneToOneField(User,related_name='user',on_delete=models.CASCADE)
     hits            = models.IntegerField(default=0)
 
+
 class Category(models.Model):
+
     bet             = models.ForeignKey(Bet,related_name='bet',on_delete=models.CASCADE)
     betCollection   = models.ForeignKey(BetCollection,related_name='betCollCategory',on_delete=models.CASCADE)
     name            = models.TextField(max_length=300)
@@ -36,7 +41,8 @@ class Option(models.Model):
     description = models.TextField(max_length=900,null=True)
     image       = models.ImageField(upload_to = 'option_pics/', default = 'option_pics/None/no-img.jpg')
     video       = models.TextField(max_length=900,null=True)
-
+    def __str__(self):
+        return self.name
 class CategoryWinner(models.Model):
     category    = models.ForeignKey(Category,on_delete = models.CASCADE)
     option      = models.ForeignKey(Option,on_delete = models.CASCADE)
