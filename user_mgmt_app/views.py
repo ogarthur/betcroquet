@@ -55,7 +55,7 @@ def user_login(request):
                 user_info=UserProfileInfo.objects.filter(user=user).values_list('profile_pic',flat=True)
 
                 if not user_info:
-                    pic = '/profile_pics/avatar.png'
+                    pic = 'profile_pics/avatar.png'
                 else:
                     pic= user_info[0]
                 request.session['profile_pic'] = pic
