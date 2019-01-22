@@ -1,3 +1,29 @@
+/*COLORS
+dark green:012622
+rich black:003B36
+lavender mist:ECE5F0
+carrot orange:E98A15
+pansy purple:59114D
+
+*/
+:root {
+  --japanese-indigo:#264653 ;
+  --jungle-green: #2A9D8F;
+  --hansa-yellow: #E9C46A;
+  --sandy-brown: #F4A261;
+  --light-red-orchre:#E76F51;
+  --main-txt-color: blue;
+  --main-padding: 15px;
+}
+.orangeBg{
+  background:var(--sandy-brown);
+}
+.yellowBg{
+  background:var(--hansa-yellow);
+}
+.jungleBg{
+  background:var(--jungle-green);
+}
 html,
 body {
   font-family: Verdana,Geneva,sans-serif;
@@ -18,7 +44,7 @@ footer {
  bottom: 0;
  width: 100%;
  height: 60px;
- background-color: #f5f5f5;
+ background-color: var(--japanese-indigo);
  border-radius: 0!important;
 }
 
@@ -28,11 +54,13 @@ footer {
   display: block;
   position: relative;
   padding-bottom: 100px; /* height of your footer */
+  background-color:var(--hansa-yellow);
 }
 .jumbotron {
-    background: #796537;
+
     color: white;
-    padding-bottom: 80px
+    text-align: center;
+    margin:0
 }
 .bg-grey {
     background-color: #f6f6f6;
@@ -41,11 +69,12 @@ input{
   color:black;
 }
 .jumbotron .btn-primary {
-    background: #845ac7;
-    border-color: #845ac7
+    background:var( --sandy-brown);
+    border-color: #F1B46A
 }
+
 .jumbotron .btn-primary:hover {
-    background: #7646c1
+    background: #D47E14
 }
 .jumbotron p {
     color: #d9ccee;
@@ -60,7 +89,7 @@ input{
 }
 .navbar{
   border:none!important;
-  background-color: #46340B;
+  background-color: var(--japanese-indigo);
   margin-bottom: 0!important;
   margin-top: -1em;
 }
@@ -82,7 +111,9 @@ input{
     max-width: 100%
 }
 
-
+.codeInput{
+  border-radius: 0.2
+}
 @media screen and (max-width: 769px)  {
 
   }

@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include, re_path
 from main_app import views as mViews
+from betcroquet_app import views as bViews
 from user_mgmt_app import views as uViews
 
 from wagtail.admin import urls as wagtailadmin_urls
@@ -26,10 +27,11 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-    path('',mViews.index,name='index'),
+    path('',bViews.index,name='index'),
     path('admin/', admin.site.urls),
     path('main_app/',include('main_app.urls')),
     path('user_mgmt_app/',include('user_mgmt_app.urls')),
+    path('betcroquet_app/',include('betcroquet_app.urls')),
     #path('logout/',views.user_logout,name='logout'),
     re_path(r'^cms/', include(wagtailadmin_urls)),
     re_path(r'^documents/', include(wagtaildocs_urls)),
