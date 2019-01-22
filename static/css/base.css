@@ -84,8 +84,7 @@ body {
   width: 36px;
   height: 36px;
   padding: 8px;
-  behavior: url(PIE.htc);
-  /* remove if you don't care about IE8 */
+
 
 }
 footer {
