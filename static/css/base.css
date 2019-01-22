@@ -21,8 +21,9 @@ pansy purple:59114D
 .yellowBg{
   background:var(--hansa-yellow);
 }
-.jungleBg{
+.jumheader,.jungleBg{
   background:var(--jungle-green);
+  color:var(--hansa-yellow);
 }
 html,
 body {
@@ -38,6 +39,54 @@ body {
 .logo-conatiner{
   padding-top: 0;
   padding-bottom: 0;
+  float: left;
+
+
+}
+.logo{
+  color:var(--light-red-orchre)!important;
+  font-size: 2em;
+}
+.dropdown{
+  display: inline-block;
+}
+
+.container-fluid a{
+  margin:1em 1em 1em 1em;
+}
+.jumheader a{
+  color:var(--hansa-yellow)!important;
+}
+.avatar-drop{
+
+  margin-left: 50%;
+  background-color:var(--light-red-orchre);
+  font-size: 1.2em;
+}
+.avatar-drop a:hover{
+    background-color:	 #ed9078!important;
+
+}
+
+.perfil-img{
+  max-height: 200px;
+  border-radius: 50%;
+  margin-top: 3em;
+  border: var(--hansa-yellow);
+  border-width: 4px;
+  border-style: solid;
+}
+.icon{
+  max-height: 2em;
+  border-radius: 50%;
+  border-radius: 50%;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+  padding: 8px;
+  behavior: url(PIE.htc);
+  /* remove if you don't care about IE8 */
+
 }
 footer {
  position: absolute;
@@ -57,8 +106,6 @@ footer {
   background-color:var(--hansa-yellow);
 }
 .jumbotron {
-
-    color: white;
     text-align: center;
     margin:0
 }
@@ -69,8 +116,8 @@ input{
   color:black;
 }
 .jumbotron .btn-primary {
-    background:var( --sandy-brown);
-    border-color: #F1B46A
+  /*  background:var( --sandy-brown);
+    border-color: #F1B46A*/
 }
 
 .jumbotron .btn-primary:hover {
@@ -112,7 +159,17 @@ input{
 }
 
 .codeInput{
-  border-radius: 0.2
+  border-radius: 0.2em;
+
+
+}
+.codeForm{
+  text-align: center;
+}
+.registration-container,.login-container{
+  background-color:var(--sandy-brown);
+  padding:2em;
+  text-align: center;
 }
 @media screen and (max-width: 769px)  {
 

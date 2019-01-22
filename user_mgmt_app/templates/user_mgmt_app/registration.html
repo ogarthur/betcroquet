@@ -2,10 +2,10 @@
 {% load staticfiles %}
 {% block head_css_section %}
   <link href="{% static 'css/login.css' %}" rel="stylesheet" media="screen">
-{% endblock head_css_section %}
+{% endblock %}
 {% block content %}
 
-<div class="jumbotron text-center">
+<div class="jumbotron jumheader text-center">
   {% if registered %}
     <h1>Gracias por registrarte!</h1>
 

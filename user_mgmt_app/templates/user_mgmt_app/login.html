@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block head_css_section %}
+
+  {% load staticfiles%} 
   <link href="{% static 'css/login.css' %}" rel="stylesheet" media="screen">
-{% endblock head_css_section %}
+
 {% block content %}
 
-<div class="jumbotron text-center">
+<div class="jumbotron jumheader text-center">
 <h2>LOGIN</h2>
 </div>
 
@@ -21,11 +22,11 @@
         <form action="{% url 'user_mgmt_app:user_login' %}" method="post">
         {% csrf_token %}
           <div class="form-group">
-            <label class="control-label"  for="username">Nombre de usuario:</label>
+            <label class="control-label"  for="username">Username:</label>
             <input class="form-control" type="text" name="username" placeholder="Nombre de Usuario">
           </div>
           <div class="form-group">
-            <label class="control-label"  for="password">Contraseña:</label>
+            <label class="control-label"  for="password">Password:</label>
             <input class="form-control" type="password" name="password">
           </div>
           <div class="text-center" >

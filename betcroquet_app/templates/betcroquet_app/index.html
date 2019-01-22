@@ -1,22 +1,96 @@
 {% extends 'base.html' %}
+{% block head_css_page %}
+  {% load staticfiles %}
+    <link href="{% static 'css/card.css' %}" rel="stylesheet" media="screen">
+{% endblock %}
+
+
+{% block page_header %}
+
+  <h1>BETCROQUET! WORK IN PROGRESS!</h1>
+  <div class="row">
+
+
+  {% if user.is_authenticated %}
+
+  <div class="col-sm-12 col-md-3 col-md-offset-4">
+    <img src="/media/{{ request.session.profile_pic }}" class="perfil-img" alt="profile_pic">
+  </div>
+  <div class="dropdown col-sm-12 col-md-3 col-md-offset-4">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <h2>Welcome,  {{request.user.username}}</h2>
+        </a>
+          <ul class="dropdown-menu avatar-drop">
+            <li><a href="#">Perfil</a></li>
+            <li><a href="{% url 'user_mgmt_app:user_logout' %}">Logout</a></li>
+          </ul>
+
+
+  </div>
+
+
+  {% else %}
+  <h2>
+    BetCroquet is a web to make "bets" between friends about different topics like the oscars...
+
+  </h2>
+  {% endif %}
+  </div>
+{% endblock %}
+
 {% block content %}
 
-<div class="jumbotron jungleBg">
-  <h1>BETCROQUET! WORK IN PROGRESS!</h1>
-  <p><h2>BetCroquet is a web to make "bets" between friends about different topics like the oscars...</h2> </p>
 
-</div>
 
+{% if user.is_authenticated %}
 <div class="jumbotron orangeBg">
   <div class='container-fluid ' id='betWrapper'>
+    <div class='row col-md-offset-3'>
 
-      <div class="form-group col-md-2 col-md-offset-5">
-        <label for="codeInput"><h1>ADD BET</h1></label>
-        <input type="text" name="" value="" class="codeInput form-control" id='codeInput'><button type="button" name="button"> <span class='glyphicon glyphicon-search'></span></button>
+      <div class="form-group col-md-3">
+
+        <label for="codeInput"><h2>ADD BET</h2></label>
+        <input type="text" name="" value="" class="codeInput form-control " id='codeInput'><button type="button" name="button" class=' icon btn btn-primary btn-lg'> <span class='glyphicon glyphicon-search'></span></button>
+
       </div>
+
+      <div class="form-group col-sm-12 col-md-6 ">
+        <h2>CREATE A NEW BET</h2>
+        <button type="button" class="btn btn-primary btn-lg"  name="button">CREATE BET</button>
+      </div>
+    </div>
   </div>
 </div>
 <div class='container-fluid wrapper yellowBg' id='betWrapper'>
   <h1>Yours active bets:<h1>
+
+    <div class="card hovercard">
+       <img src="/media/bet_templates/oscars19/oscars-logo.jpg" alt=""/>
+       <div class="avatar">
+          <img src="http://placehold.it/80X80/333333/&text=Head" alt="" />
+       </div>
+       <div class="info">
+          <div class="title">
+             tipoApuesta
+          </div>
+          <div class="desc">NOMBRE</div>
+          <div class="desc">GRUPO</div>
+          <div class="desc">Fecha</div>
+       </div>
+       <div class="bottom">
+          <button class="btn btn-default">BET!</button>
+       </div>
+    </div>
 </div>
+{% else %}
+<div class="jumbotron orangeBg">
+  <div class='container-fluid ' id='betWrapper'>
+    <div class="row">
+      <h2>You must sign in or sign up before you can start enjoying betcroquet</h2>
+      <div class="col-md-2 col-md-offset-5"><a type="button" class="btn btn-primary btn-lg"   href="{% url 'user_mgmt_app:user_login' %}" name="signin">SIGN IN</a></div>
+      <div class="col-md-2 col-md-offset-5"><a type="button" class="btn btn-primary btn-lg"   href="{% url 'user_mgmt_app:register' %}" name="signup">SIGN UP</a></div>
+    </div>
+  </div>
+</div>
+{% endif %}
 {% endblock %}
