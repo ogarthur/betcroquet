@@ -53,7 +53,12 @@ def user_login(request):
             if user.is_active:
                 login(request,user)
                 user_info=UserProfileInfo.objects.filter(user=user).values_list('profile_pic',flat=True)
-                request.session['profile_pic']=user_info[0]
+
+                if not user_info:
+                    pic = '/profile_pics/avatar.png'
+                else:
+                    pic= user_info[0]
+                request.session['profile_pic'] = pic
                 return HttpResponseRedirect(reverse('index'))
 
             else:
