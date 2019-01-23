@@ -7,7 +7,7 @@
 
 {% block page_header %}
 
-<h1>BETCROQUET! WORK IN PROGRESS!</h1>
+<h2>BETCROQUET! WORK IN PROGRESS!</h2>
 <div class="container">
 
 
@@ -17,7 +17,7 @@
   </div>
   <div class="dropdown col-sm-12 col-md-3 col-md-offset-4">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-      <h2>Welcome,  {{request.user.username}}<span class="caret"></span></h2>
+      <h3>Welcome,  {{request.user.username}}<span class="caret"></span></h3>
     </a>
     <ul class="dropdown-menu avatar-drop">
       <li><a href="#">Perfil</a></li>
@@ -53,24 +53,52 @@
   </div>
 </div>
 <div class='container-fluid wrapper yellowBg' id='betWrapper'>
-  <h1>Yours active bets:<h1>
-    <div class="card hovercard">
-      <img src="/media/bet_templates/oscars19/oscars-logo.jpg" alt=""/>
-      <div class="avatar">
-        <img src="http://placehold.it/80X80/333333/&text=Head" alt="" />
-      </div>
-      <div class="info">
-        <div class="title">
-          tipoApuesta
+  {% if bet_cards %}
+  <h1>Yours active bets:</h1>
+
+    {% for card in bet_cards %}
+    <div class = "col-md-4 col-sm-5">
+      <div class="card hovercard ">
+        <img src="{{card.image}}" alt=""/>
+        <div class="info">
+          <div class="title">
+            {{card.template}}
+          </div>
+          <div class="desc">{{card.name}}</div>
+          <div class="desc">{{card.closeDate}}</div>
         </div>
-        <div class="desc">NOMBRE</div>
-        <div class="desc">GRUPO</div>
-        <div class="desc">Fecha</div>
-      </div>
-      <div class="bottom">
-        <button class="btn btn-default">BET!</button>
+        <div class="bottom">
+          <button class="btn btn-default">BET!</button>
+        </div>
       </div>
     </div>
+
+
+    {% endfor %}
+    {% endif %}
+    {% if bet_cards_completed %}
+    <h1>Yours finished bets:</h1>
+
+      {% for card in bet_cards_completed %}
+      <div class = "col-md-4 col-sm-5">
+        <div class="card hovercard">
+          <img src="{{card.image}}" alt=""/>
+          <div class="info">
+            <div class="title">
+              {{card.template}}
+            </div>
+            <div class="desc">{{card.name}}</div>
+            <div class="desc">{{card.closeDate}}</div>
+          </div>
+          <div class="bottom">
+            <button class="btn btn-default">BET!</button>
+          </div>
+        </div>
+      </div>
+
+
+      {% endfor %}
+      {% endif %}
   </div>
   {% else %}
   <div class="jumbotron orangeBg">

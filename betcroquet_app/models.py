@@ -10,7 +10,7 @@ class BetTemplate(models.Model):
     state       = models.BooleanField(default = False)
     openDate    = models.DateField(null=True)
     endDate     = models.DateField(null=False)
-
+    image       = models.ImageField(upload_to = 'bet_templates/', default = 'default.jpg',)
 
     def __str__(self):
         return self.name
@@ -25,7 +25,6 @@ class BetCollection(models.Model):
     description = models.TextField(max_length=500,null=True)
 
     template    = models.ForeignKey(BetTemplate,related_name="betCollTemplate",on_delete=models.CASCADE,null=True)
-
     def __str__(self):
         return '{}:{}'.format(self.gameCode,self.name)
 
@@ -68,7 +67,7 @@ class BetSelection(models.Model):
     category    = models.OneToOneField(Category,related_name = 'categoryBet',on_delete = models.CASCADE)
     option      = models.OneToOneField(Option,related_name = 'optionBet',on_delete = models.CASCADE)
     def __str__(self):
-        return 'user:{},c:{},o:{}'.format(self.bet.user.username,self.category.name,self.option.name) 
+        return 'user:{},c:{},o:{}'.format(self.bet.user.username,self.category.name,self.option.name)
 
 class CategoryWinner(models.Model):
     category    = models.ForeignKey(Category,on_delete = models.CASCADE)

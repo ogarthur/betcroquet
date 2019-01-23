@@ -23,12 +23,18 @@
   padding-top: 0;
   overflow: hidden;
   text-align: center;
-  background-color: #fff;
+  background-color:#f4a261;
 }
+.card.hovercard:hover {
+  opacity: 0.6;
+}
+
 
 .card.hovercard img {
   width: 300px;
   height: 200px;
+  border-color: #8a6d3b;
+  border-bottom-width: 1px;
 }
 
 .card.hovercard .avatar {

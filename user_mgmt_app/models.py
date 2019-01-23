@@ -9,7 +9,7 @@ class UserProfileInfo(models.Model):
 
     #aditional
     user_info    = models.TextField(max_length=500,blank=True)
-    profile_pic     = models.ImageField(upload_to = 'profile_pics/', default = 'pic_folder/None/no-img.jpg')
+    profile_pic   = models.ImageField(upload_to = 'profile_pics/', default = 'pic_folder/None/no-img.jpg')
     language     = models.CharField(max_length=10,
                                 choices=settings.LANGUAGES,
                                 default=settings.LANGUAGE_CODE)

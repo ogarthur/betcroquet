@@ -24,6 +24,8 @@ pansy purple:59114D
 .jumheader,.jungleBg{
   background:var(--jungle-green);
   color:var(--hansa-yellow);
+  padding-top: 0;
+  padding-bottom: 0;
 }
 html,
 body {
