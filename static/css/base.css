@@ -37,11 +37,12 @@ body {
   margin-top: -4px;
 }
 .logo-conatiner{
-  padding-top: 0;
-  padding-bottom: 0;
+
+  margin: 0!important;
   float: left;
-
-
+}
+#rowLogo{
+  margin:0!important
 }
 .logo{
   color:var(--light-red-orchre)!important;
