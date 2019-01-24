@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% if user.is_authenticated %}
+{% block page_header %}
+
+
+<div class="container">
+  <div class="col-sm-12 col-md-3 col-md-offset-4">
+    <h2>MAKE YOUR BET!</h2>
+    <img src="/media/{{ request.session.profile_pic }}" class="perfil-img" alt="profile_pic">
+  </div>
+  <div class="dropdown col-sm-12 col-md-3 col-md-offset-4">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+      <h3>Welcome,  {{request.user.username}}<span class="caret"></span></h3>
+    </a>
+    <ul class="dropdown-menu avatar-drop">
+      <li><a href="#">Perfil</a></li>
+      <li><a href="{% url 'user_mgmt_app:user_logout' %}">Logout</a></li>
+    </ul>
+  </div>
+
+</div>
+
+{% endblock %}
+{% block content %}
+<div class="jumbotron orangeBg">
+  <div class='container-fluid ' id='betWrapper'>
+    <div class='row col-md-offset-3'>
+      <span>bet name and small data</span>
+    </div>
+  </div>
+  <div class='container-fluid wrapper yellowBg' id='betWrapper'>
+    aqui formulario de apuesta
+  </div>
+
+
+
+  {% endblock %}
+  {% endif %}

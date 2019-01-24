@@ -7,30 +7,30 @@
 
 {% block page_header %}
 
-<h2>BETCROQUET! WORK IN PROGRESS!</h2>
-<div class="container">
 
-
-  {% if user.is_authenticated %}
-  <div class="col-sm-12 col-md-3 col-md-offset-4">
-    <img src="/media/{{ request.session.profile_pic }}" class="perfil-img" alt="profile_pic">
+  <div class="container">
+    {% if user.is_authenticated %}
+    <div class="col-sm-12 col-md-3 col-md-offset-4">
+      <h2>BETCROQUET! WORK IN PROGRESS!</h2>
+        <a href="#"><img src="/media/{{ request.session.profile_pic }}"class="perfil-img" alt="profile_pic"></a>
+    </div>
+    <div class="dropdown col-sm-12 col-md-3 col-md-offset-4">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <h3>Welcome,  {{request.user.username}}<span class="caret"></span></h3>
+      </a>
+      <ul class="dropdown-menu avatar-drop">
+        <li><a href="#">Perfil</a></li>
+        <li><a href="{% url 'user_mgmt_app:user_logout' %}">Logout</a></li>
+      </ul>
+    </div>
+    {% else %}
+    <h2>
+      BetCroquet is a web to make "bets" between friends about different topics like the oscars...
+    </h2>
+    {% endif %}
   </div>
-  <div class="dropdown col-sm-12 col-md-3 col-md-offset-4">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-      <h3>Welcome,  {{request.user.username}}<span class="caret"></span></h3>
-    </a>
-    <ul class="dropdown-menu avatar-drop">
-      <li><a href="#">Perfil</a></li>
-      <li><a href="{% url 'user_mgmt_app:user_logout' %}">Logout</a></li>
-    </ul>
-  </div>
-  {% else %}
-  <h2>
-    BetCroquet is a web to make "bets" between friends about different topics like the oscars...
-  </h2>
-  {% endif %}
-</div>
 {% endblock %}
+
 {% block content %}
 {% if user.is_authenticated %}
 <div class="jumbotron orangeBg">
@@ -41,13 +41,13 @@
         <div class="form-group col-md-3">
           <label for="codeInput"><h2>ADD BET</h2></label>
           {% for field in addBetForm %}
-          <input type="text" name="gameCode"  class="codeInput form-control " id={{ field.auto_id }}><button type="submit" name="button" class=' icon btn btn-primary btn-lg'> <span class='glyphicon glyphicon-search'></span></button>
+          <input type="text" name="gameCode"  class="codeInput form-control "required id={{ field.auto_id }}><button type="submit" name="button" class=' icon btn btn-primary btn-lg'> <span class='glyphicon glyphicon-search'></span></button>
           {% endfor %}
         </div>
       </form>
       <div class="form-group col-sm-12 col-md-6 ">
         <h2>CREATE A NEW BET</h2>
-        <button type="button" class="btn btn-primary btn-lg"  name="button">CREATE BET</button>
+        <button type="button" class="btn btn-primary btn-lg disabled"  name="button">CREATE BET</button>
       </div>
     </div>
   </div>
@@ -68,7 +68,7 @@
           <div class="desc">{{card.closeDate}}</div>
         </div>
         <div class="bottom">
-          <button class="btn btn-default">BET!</button>
+        <a class="btn btn-default"  href="{% url 'betcroquet_app:betView' card.gameCode   %}" %}>BET!</a>
         </div>
       </div>
     </div>
@@ -91,7 +91,7 @@
             <div class="desc">{{card.closeDate}}</div>
           </div>
           <div class="bottom">
-            <button class="btn btn-default">BET!</button>
+            <button class="btn btn-default"  href="#" %}>BET!</button>
           </div>
         </div>
       </div>

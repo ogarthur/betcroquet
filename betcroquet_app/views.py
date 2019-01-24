@@ -32,6 +32,7 @@ def index(request):
             card ={'template':bet_template.name,
                    'templateDes':bet_template.description,
                    'name':bet_collection.name,
+                   'gameCode':bet_collection.gameCode,
                    'collectionDes':bet_collection.description,
                    'closeDate':bet_collection.closeDate,
                    'state':bet_template.state,
@@ -64,3 +65,9 @@ def index(request):
         return render(request,'betcroquet_app/index.html',data)
     else:
         return render(request,'betcroquet_app/index.html')
+
+def betview(request,gameCode):
+    return render(request,'betcroquet_app/betform.html')
+
+def addBetview(request):
+    return render(request,'betcroquet_app/addbet.html')
